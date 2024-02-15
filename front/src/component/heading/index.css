@@ -1,0 +1,30 @@
+.heading {
+    position: relative;
+    padding-top: 108px;
+    gap: 16px;        
+    height: 683px;
+    width:  393px;
+    max-width: 100%;   
+    background-image: url(welcome-bg-image.svg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left -184px top 0px;   
+    z-index: 2;
+}
+
+.title--big {
+    display: flex;
+    font-family: "Jost", sans-serif;
+    font-size: 42px;    
+    color: #FFFFFF;
+    font-weight: 500;
+    justify-content: center; 
+}
+
+.description {
+    font-size: 20px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}
+

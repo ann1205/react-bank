@@ -6,3 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.App-header {
+  display: flex;
+    flex-direction: column;    
+    gap: 20px;
+    align-items: center;
+    padding-top: 70px;
+}
