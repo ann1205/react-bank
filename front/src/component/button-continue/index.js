@@ -1,10 +1,6 @@
 import Button from "../button";
 import "./index.css";
 
-export default function ButtonContinue() {
-  return (
-    <Button>
-      <button className="button-continue"></button>
-    </Button>
-  );
+export default function Component() {
+  return <Button className={"button-continue"}>Continue</Button>;
 }

@@ -12,5 +12,18 @@ body {
     flex-direction: column;    
     gap: 20px;
     align-items: center;
-    padding-top: 70px;
+    padding: 20px;
+}
+
+.App-link {
+  text-decoration: none;
+  color: #FFFFFF;  
+}
+
+.icon--small {
+  display: block;
+  width: 16px;
+  height: 16px;   
+  background-size: contain;
+  background-repeat: no-repeat;
 }

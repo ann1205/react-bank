@@ -1,5 +1,5 @@
 import "./index.css";
 
-export default function Header({ children }) {
+export default function Component({ children }) {
   return <header className="header">{children}</header>;
 }

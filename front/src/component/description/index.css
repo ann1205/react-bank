@@ -1,0 +1,11 @@
+.description {
+    font-size: 20px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}
+
+.description-smaller {
+    font-size: 14px;
+    color: #939199;
+}
