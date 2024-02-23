@@ -10,7 +10,7 @@ body {
 .App-header {
   display: flex;
     flex-direction: column;    
-    gap: 20px;
+    gap: 32px;
     align-items: center;
     padding: 20px;
 }

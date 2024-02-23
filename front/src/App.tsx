@@ -4,36 +4,10 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Page from "./page";
 import WellcomePage from "./container/welcome-page";
 import SignupPage from "./container/signup-page";
-
-const SignupConfirmPage: React.FC = () => {
-  return <div className="App-header">Sign Up Confirm</div>;
-};
-
-const SigninPage: React.FC = () => {
-  const auth = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (auth) auth.login(true);
-    navigate("/BalancePage");
-  };
-
-  return (
-    <div className="App-header">
-      <div onClick={handleClick} className="">
-        Sign In
-      </div>
-    </div>
-  );
-};
-
-const RecoveryPage: React.FC = () => {
-  return <div className="App-header">Recovery</div>;
-};
-
-const RecoveryConfirmPage: React.FC = () => {
-  return <div className="App-header">Recovery Confirm</div>;
-};
+import SignupConfirmPage from "./container/signup-confirm-page";
+import SigninPage from "./container/signin-page";
+import RecoveryPage from "./container/recovery-page";
+import RecoveryConfirmPage from "./container/recovery-confirm-page";
 
 const BalancePage: React.FC = () => {
   return <div className="App-header">Balance</div>;
@@ -160,14 +134,14 @@ function App() {
         <AuthProvider>
           <BrowserRouter>
             <Routes>
-              {/* <Route
+              <Route
                 index
                 element={
-                  <PrivateRoute>
-                    <WellcomePage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <WellcomePage />
+                  // </PrivateRoute>
                 }
-              /> */}
+              />
               <Route
                 path="/signup"
                 element={
@@ -176,38 +150,38 @@ function App() {
                   /* </PrivateRoute> */
                 }
               />
-              {/* <Route
+              <Route
                 path="/signup-confirm"
                 element={
-                  <PrivateRoute>
-                    <SignupConfirmPage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <SignupConfirmPage />
+                  // </PrivateRoute>
                 }
-              /> */}
-              {/* <Route
+              />
+              <Route
                 path="/signin"
                 element={
-                  <AuthRoute>
-                    <SigninPage />
-                  </AuthRoute>
+                  // <AuthRoute>
+                  <SigninPage />
+                  // </AuthRoute>
                 }
-              /> */}
-              {/* <Route
+              />
+              <Route
                 path="/recovery"
                 element={
-                  <AuthRoute>
-                    <RecoveryPage />
-                  </AuthRoute>
+                  // <AuthRoute>
+                  <RecoveryPage />
+                  /* </AuthRoute> */
                 }
-              /> */}
-              {/* <Route
+              />
+              <Route
                 path="/recovery-confirm"
                 element={
-                  <AuthRoute>
-                    <RecoveryConfirmPage />
-                  </AuthRoute>
+                  // <AuthRoute>
+                  <RecoveryConfirmPage />
+                  /* </AuthRoute> */
                 }
-              /> */}
+              />
               {/* <Route
                 path="/balance"
                 element={

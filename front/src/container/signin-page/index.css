@@ -1,0 +1,22 @@
+.alert {
+    display: flex;
+    font-size: 14px;
+    gap: 4px;
+}
+
+
+.alert--info {
+    color: #1D1D1F;
+    align-self: start;
+}
+
+.alert--warning {
+    color: #F2883D;
+    background-color: rgba(242, 136, 61, 0.1);
+    width: 353px;
+    height: 48px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
