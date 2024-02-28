@@ -14,3 +14,13 @@
     background-color: #FFFFFF;
     border: 1px solid #775CE5;  
 }
+
+.button--disabled {
+    opacity: 0.5;
+      cursor: default;
+
+      &:hover, &:active {
+        opacity: 0.5;
+        cursor: default;
+      }
+}

@@ -1,8 +1,17 @@
 import "./index.css";
 
-export default function Component({ children, className, style = {} }) {
+export default function Component({
+  children,
+  className,
+  style = {},
+  onClick,
+}) {
   return (
-    <button style={style} className={`button ${className}`}>
+    <button
+      onClick={`${onClick}`}
+      style={style}
+      className={`button ${className}`}
+    >
       {children}
     </button>
   );

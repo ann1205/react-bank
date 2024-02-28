@@ -2,17 +2,21 @@
 const express = require('express')
 const router = express.Router()
 
+router.get('/', function (req, res) {
+  res.render('index', {
+    name: 'index',
+    title: 'Home page',
+    data: {},
+  })
+})
+
 // Підключіть файли роутів
-// const test = require('./test')
+const auth = require('./auth')
 // Підключіть інші файли роутів, якщо є
 
 // Об'єднайте файли роутів за потреби
-// router.use('/', test)
+router.use('/', auth)
 // Використовуйте інші файли роутів, якщо є
-
-router.get('/', (req, res) => {
-  res.status(200).json('Hello World')
-})
 
 // Експортуємо глобальний роутер
 module.exports = router

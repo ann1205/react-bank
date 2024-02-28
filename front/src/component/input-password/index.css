@@ -18,15 +18,9 @@
       right: 16px;
       top: calc(50% - 10px);
 
-    &:hover {
-        opacity: 0.7;     
-    
-
     &[show] {
       background-image: url('password-hide.svg');
-    }
-
-    }
+    }    
   }
 }
 }

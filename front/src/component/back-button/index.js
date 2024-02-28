@@ -1,13 +1,18 @@
 import "./index.css";
-
-// class BackButton {
-//   static back() {
-//     return window.history.back();
-//   }
-// }
-
-// window.backButton = BackButton;
+import arrowback from "./arrow-back.svg";
 
 export default function Component() {
-  return <button className={"back-button"}></button>;
+  class BackButton {
+    static back() {
+      return window.history.back();
+    }
+  }
+
+  window.backButton = BackButton;
+
+  return (
+    <div className={"back-button"} onСlick={() => "backButton.back();"}>
+      <img src={arrowback} alt="<" />
+    </div>
+  );
 }
