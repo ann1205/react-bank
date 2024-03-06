@@ -1,55 +1,42 @@
 import "./index.css";
 import "../input/index.css";
-import { useState } from "react";
 
-export default function Component({ children, onSubmit }) {
-  const [value, setValue] = useState("");
+class FieldPassword {
+  static toggle = (target) => {
+    target.toggleAttribute("show");
 
-  const handleSubmit = () => {
-    if (value.lenght === 0) return null;
+    const input = target.previousElementSibling;
 
-    if (onSubmit) {
-      onSubmit(value);
+    const type = input.getAttribute("type");
+
+    if (type === "password") {
+      input.setAttribute("type", "text");
     } else {
-      throw new Error("onSubmit props is undefined");
+      input.setAttribute("type", "password");
     }
-    setValue("");
   };
+}
 
-  const isDisabled = value.length === 0;
-
-  class FieldPassword {
-    static toggle = (target) => {
-      target.toggleAttribute("show");
-
-      const input = target.previousElementSibling;
-
-      const type = input.getAttribute("type");
-
-      if (type === "password") {
-        input.setAttribute("type", "text");
-      } else {
-        input.setAttribute("type", "password");
-      }
-    };
-  }
-
-  window.fieldPassword = FieldPassword;
+export default function Component({ children, onChange }) {
+  const passwordToggle = (e) => FieldPassword.toggle(e.target);
 
   return (
-    <div class="field field--password">
-      <label for="password" class="field__label">
+    <div className="field field--password">
+      <label className="field__label" htmlFor="password">
         {children}
       </label>
 
-      <div class="field__wrapper">
+      <div className="field__wrapper">
         <input
-          oninput="{{action}}(this.name, this.value)"
-          type="password"
-          class="field__input validation"
+          id="password"
           name="password"
+          onChange={onChange}
+          autoComplete="current-password"
+          type="password"
+          className="field__input validation"
+          placeholder="Введіть пароль"
         />
-        <span onSubmit="fieldPassword.toggle(this)" class="field__icon"></span>
+        <span onClick={passwordToggle} className="field__icon"></span>
       </div>
     </div>
   );

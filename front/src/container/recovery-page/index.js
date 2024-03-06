@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import "./index.css";
 import Backbutton from "../../component/back-button";
-import Button from "../../component/button";
+import ButtonContinue from "../../component/button-continue";
 import Title from "../../component/title";
 import Heading from "../../component/heading";
 import Description from "../../component/description";
 import Input from "../../component/input";
-import { Form, REG_EXP_EMAIL } from "../../script/form";
+import { MyForm, REG_EXP_EMAIL } from "../../script/form";
 
 export default function Component() {
-  class RecoveryForm extends Form {
+  class RecoveryForm extends MyForm {
     FIELD_NAME = {
       EMAIL: "email",
     };
@@ -86,11 +86,11 @@ export default function Component() {
         </Description>
       </Heading>
       <Input>Email</Input>
-      <Button onClick="recoveryForm.submit()">
+      <ButtonContinue onClick="recoveryForm.submit()">
         <Link className="App-link" to="/recovery-confirm">
           Send code
         </Link>
-      </Button>
+      </ButtonContinue>
     </div>
   );
 }

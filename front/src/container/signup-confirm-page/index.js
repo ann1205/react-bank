@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./index.css";
 import Backbutton from "../../component/back-button";
-import Button from "../../component/button";
+import ButtonContinue from "../../component/button-continue";
 import Title from "../../component/title";
 import Heading from "../../component/heading";
 import Description from "../../component/description";
@@ -19,11 +19,11 @@ export default function Component() {
       </Heading>
       <Input>Code</Input>
 
-      <Button>
+      <ButtonContinue>
         <Link className="App-link" to="/balance">
           Confirm
         </Link>
-      </Button>
+      </ButtonContinue>
     </div>
   );
 }

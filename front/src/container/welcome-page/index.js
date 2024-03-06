@@ -2,7 +2,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import Heading from "../../component/heading";
 import Header from "../../component/header";
-import Button from "../../component/button";
+import ButtonContinue from "../../component/button-continue";
 import Title from "../../component/title";
 
 export default function Component() {
@@ -15,18 +15,18 @@ export default function Component() {
         </Heading>
       </Header>
       <div>
-        <Button className={"button-white"}>
+        <ButtonContinue className={"button-white"}>
           <Link className="App-link" to="/signup">
             Sign Up
           </Link>
-        </Button>
+        </ButtonContinue>
       </div>
       <div>
-        <Button>
+        <ButtonContinue>
           <Link className="App-link" to="/signin">
             Sign In
           </Link>
-        </Button>
+        </ButtonContinue>
       </div>
     </div>
   );

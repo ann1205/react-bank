@@ -1,17 +1,23 @@
-import "./index.css";
-import { Link } from "react-router-dom";
-import Backbutton from "../../component/back-button";
-import ButtonContinue from "../../component/button-continue";
-import Title from "../../component/title";
-import Heading from "../../component/heading";
-import Description from "../../component/description";
-import Input from "../../component/input";
-import InputPassword from "../../component/input-password";
-import Form from "../../component/form";
-import FormItem from "../../component/form-item";
-import { MyForm, REG_EXP_EMAIL, REG_EXP_PASSWORD } from "../../script/form";
+import { MyForm, REG_EXP_EMAIL, REG_EXP_PASSWORD } from "../script/form";
 
-class SignupForm extends MyForm {
+// class SignForm {
+//   static value = {};
+
+//   static validate = (name, value) => {
+//     return true;
+//   };
+
+//   static submit = () => {
+//     console.log(this.value);
+//   };
+
+//   static change = (name, value) => {
+//     console.log(name, value);
+//     if (this.validate(name, value)) this.value[name] = value;
+//   };
+// }
+
+export class SignupForm extends MyForm {
   FIELD_NAME = {
     EMAIL: "email",
     PASSWORD: "password",
@@ -73,7 +79,6 @@ class SignupForm extends MyForm {
           this.setAlert("error", data.message);
         }
       } catch (error) {
-        console.error("Error during fetch:", error);
         this.setAlert("error", error.message);
       }
     }
@@ -85,44 +90,4 @@ class SignupForm extends MyForm {
       [this.FIELD_NAME.PASSWORD]: this.value[this.FIELD_NAME.PASSWORD],
     });
   };
-}
-
-export default function Container() {
-  const signupForm = new SignupForm();
-
-  const handleChangeEmail = (e) => signupForm.change("email", e.target.value);
-
-  const handleChangePassword = (e) =>
-    signupForm.change("password", e.target.value);
-
-  const handleSubmit = (data) => signupForm.submit(data);
-
-  return (
-    <div className="App-header">
-      <Backbutton />
-      <form className="page__section">
-        <Heading>
-          <Title>Sign Up</Title>
-          <Description className={"description-smaller"}>
-            Choose a registration method
-          </Description>
-        </Heading>
-        <Form>
-          <FormItem name="email">
-            <Input onChange={handleChangeEmail}>Email</Input>
-          </FormItem>
-          <FormItem name="password">
-            <InputPassword onChange={handleChangePassword}>
-              Password
-            </InputPassword>
-          </FormItem>
-        </Form>
-        <ButtonContinue onClick={handleSubmit}>
-          <Link className="App-link" to="/signup-confirm">
-            Continue
-          </Link>
-        </ButtonContinue>
-      </form>
-    </div>
-  );
 }

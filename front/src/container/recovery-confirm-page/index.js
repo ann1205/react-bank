@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./index.css";
 import Backbutton from "../../component/back-button";
-import Button from "../../component/button";
+import ButtonContinue from "../../component/button-continue";
 import Title from "../../component/title";
 import Heading from "../../component/heading";
 import Description from "../../component/description";
@@ -20,11 +20,11 @@ export default function Component() {
       </Heading>
       <Input>Code</Input>
       <InputPassword>New password</InputPassword>
-      <Button>
+      <ButtonContinue>
         <Link className="App-link" to="/balance">
           Restore password
         </Link>
-      </Button>
+      </ButtonContinue>
     </div>
   );
 }

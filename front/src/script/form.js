@@ -4,7 +4,7 @@ export const REG_EXP_PASSWORD = new RegExp(
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 );
 
-export class Form {
+export class MyForm {
   FIELD_NAME = {};
   FIELD_ERROR = {};
 
@@ -13,6 +13,7 @@ export class Form {
   disabled = true;
 
   change = (name, value) => {
+    console.log(name, value);
     const error = this.validate(name, value);
     this.value[name] = value;
 

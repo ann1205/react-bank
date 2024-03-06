@@ -1,16 +1,19 @@
 import "./index.css";
 
-export default function Component({ children, action }) {
+export default function Component({ children, onChange }) {
   return (
-    <div className={`field`}>
-      <label for="email" className="field__label">
+    <div className="field">
+      <label className="field__label" htmlFor="email">
         {children}
       </label>
       <input
-        oninput={action}
+        id="email"
+        name="email"
+        onChange={onChange}
+        autoComplete="username"
+        placeholder="Ваш e-mail"
         type="email"
         className="field__input validation"
-        name="email"
       />
     </div>
   );

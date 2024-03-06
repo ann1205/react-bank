@@ -1,3 +1,13 @@
+@import '../../style/form.scss';
+
+.page__section {    
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+
+	justify-content: center;
+}
+
 .alert {
     display: flex;
     font-size: 14px;

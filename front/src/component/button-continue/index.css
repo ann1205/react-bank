@@ -1,3 +1,26 @@
 .button {
-    
+    font-size: 16px;
+    width: 353px;
+    max-width: 100%;
+    height: 56px;
+    background-color: #775CE5;
+    color: #FFFFFF;
+    border-radius: 12px;
+}
+
+
+.button-white {
+    color: #775CE5;
+    background-color: #FFFFFF;
+    border: 1px solid #775CE5;  
+}
+
+.button--disabled {
+    opacity: 0.5;
+      cursor: default;
+
+      &:hover, &:active {
+        opacity: 0.5;
+        cursor: default;
+      }
 }

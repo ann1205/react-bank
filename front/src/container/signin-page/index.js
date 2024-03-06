@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./index.css";
 import Backbutton from "../../component/back-button";
-import Button from "../../component/button";
+import ButtonContinue from "../../component/button-continue";
 import Title from "../../component/title";
 import Heading from "../../component/heading";
 import Description from "../../component/description";
@@ -33,11 +33,11 @@ export default function Component() {
         Forgot your password?
         <Link to="/recovery">Restore</Link>
       </span>
-      <Button>
+      <ButtonContinue>
         <Link className="App-link" to="/signup-confirm">
           Continue
         </Link>
-      </Button>
+      </ButtonContinue>
       {/* </div> */}
     </div>
   );

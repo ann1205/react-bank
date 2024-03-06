@@ -1,6 +1,14 @@
-import Button from "../button";
 import "./index.css";
 
-export default function Component(className) {
-  return <Button className={`button-continue ${className}`}>Continue</Button>;
+export default function Component({
+  children,
+  style = {},
+  className,
+  onClick,
+}) {
+  return (
+    <button onClick={onClick} style={style} className={`button ${className}`}>
+      {children}
+    </button>
+  );
 }

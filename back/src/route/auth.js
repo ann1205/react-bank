@@ -6,10 +6,10 @@ const router = express.Router()
 const { User } = require('../class/user')
 const { Confirm } = require('../class/confirm')
 
-User.create({
-  email: 'test@mail.com',
-  password: 123456,
-})
+// User.create({
+//   email: 'test2@mail.com',
+//   password: 12526456,
+// })
 
 // ===============================================
 
@@ -23,7 +23,6 @@ router.get('/signup', function (req, res) {
 
 router.post('/signup', function (req, res) {
   const { email, password } = req.body
-
   console.log(req.body)
 
   if (!email || !password) {
