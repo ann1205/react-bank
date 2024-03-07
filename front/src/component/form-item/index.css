@@ -9,8 +9,9 @@
         color: red;
         font-size: 12px;
         display: none;
+    }
 
-        &--active {
-            display: block;
-        }
+    
+    .form__error--active {
+        display: block;
     }

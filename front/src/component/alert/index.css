@@ -1,0 +1,31 @@
+.alert {
+    /* display: flex; */
+    font-size: 14px;
+    gap: 4px;
+    /* border: 1px solid transparent;
+    border-radius: 10px;
+    padding: s.space(3) s.space(4);
+    font-size: 14px; */
+}  
+
+.alert--progress {
+  color: green;
+  border-color: green;
+}
+
+.alert--warning {
+  display: block;
+  color: #F2883D;
+  background-color: rgba(242, 136, 61, 0.1);
+  width: 353px;
+  height: 48px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+  
+.alert--disabled {
+      display: none !important;
+    }
+  
+  

@@ -31,13 +31,13 @@
       &:focus {
         border-color: #775CE5;
       }
+
     }
 
-.validation {
-  &--active {
-    border-color: red;
-    color: red;
-  }
+
+  .validation--active {
+    border-color: red !important;
+    color: red;    
 }
 
 

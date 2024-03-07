@@ -9,6 +9,7 @@ import Input from "../../component/input";
 import InputPassword from "../../component/input-password";
 import Form from "../../component/form";
 import FormItem from "../../component/form-item";
+import Alert from "../../component/alert";
 import { MyForm, REG_EXP_EMAIL, REG_EXP_PASSWORD } from "../../script/form";
 
 class SignupForm extends MyForm {
@@ -46,13 +47,23 @@ class SignupForm extends MyForm {
     }
   };
 
+  // submit = () => {
+  //   if (this.disabled === true) {
+  //     this.validateAll();
+  //   } else {
+  //     console.log(this.value);
+
+  //     this.setAlert("progress", "Завантаження");
+  //   }
+  // };
+
   submit = async () => {
     if (this.disabled === true) {
       this.validateAll();
     } else {
       console.log(this.value);
 
-      this.setAlert("progress", "Завантаження...");
+      this.setAlert("progress", "Завантаження");
 
       try {
         const res = await fetch("http://localhost:4000/signup", {
@@ -117,11 +128,12 @@ export default function Container() {
             </InputPassword>
           </FormItem>
         </Form>
-        <ButtonContinue onClick={handleSubmit}>
-          <Link className="App-link" to="/signup-confirm">
-            Continue
-          </Link>
+        <ButtonContinue onClick={handleSubmit} className="button--disabled">
+          {/* <Link className="App-link" to="/signup-confirm"> */}
+          Continue
+          {/* </Link> */}
         </ButtonContinue>
+        <Alert>Увага, помилка</Alert>
       </form>
     </div>
   );

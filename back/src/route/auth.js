@@ -36,17 +36,18 @@ router.post('/signup', function (req, res) {
 
     if (user) {
       return res.status(400).json({
-        message: 'Помилка. Такий користувач вже існує',
+        message:
+          'A user with the same name is already exist',
       })
     }
     User.create({ email, password })
 
     return res.status(200).json({
-      message: 'Користувач успішно зареєстрований',
+      message: 'User successfully registered',
     })
   } catch (err) {
     return res.status(400).json({
-      message: 'Помилка створення користувача',
+      message: 'Error creating a user',
     })
   }
 })

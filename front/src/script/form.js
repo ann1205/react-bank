@@ -76,10 +76,8 @@ export class MyForm {
 
     if (status === "progress") {
       el.className = "alert alert--progress";
-    } else if (status === "success") {
-      el.className = "alert alert--success";
-    } else if (status === "error") {
-      el.className = "alert alert--error";
+    } else if (status === "warning") {
+      el.className = "alert alert--warning";
     } else {
       el.className = "alert alert--disabled";
     }
