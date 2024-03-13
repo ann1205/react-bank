@@ -11,6 +11,7 @@ import Form from "../../component/form";
 import FormItem from "../../component/form-item";
 import Alert from "../../component/alert";
 import { MyForm, REG_EXP_EMAIL, REG_EXP_PASSWORD } from "../../script/form";
+import { saveSession } from "../../script/session";
 
 class SignupForm extends MyForm {
   FIELD_NAME = {
@@ -47,16 +48,6 @@ class SignupForm extends MyForm {
     }
   };
 
-  // submit = () => {
-  //   if (this.disabled === true) {
-  //     this.validateAll();
-  //   } else {
-  //     console.log(this.value);
-
-  //     this.setAlert("progress", "Завантаження");
-  //   }
-  // };
-
   submit = async () => {
     if (this.disabled === true) {
       this.validateAll();
@@ -78,8 +69,8 @@ class SignupForm extends MyForm {
 
         if (res.ok) {
           this.setAlert("success", data.message);
-          // saveSession(data.session);
-          // location.assign("/");
+          saveSession(data.session);
+          window.location.assign("/signup-confirm");
         } else {
           this.setAlert("error", data.message);
         }
@@ -128,10 +119,14 @@ export default function Container() {
             </InputPassword>
           </FormItem>
         </Form>
+        <span className="link__prefix">
+          Forgot your password?
+          <Link to="/signin"> Restore</Link>
+        </span>
         <ButtonContinue onClick={handleSubmit} className="button--disabled">
-          {/* <Link className="App-link" to="/signup-confirm"> */}
-          Continue
-          {/* </Link> */}
+          <Link className="App-link" to="/signup-confirm">
+            Continue
+          </Link>
         </ButtonContinue>
         <Alert>Увага, помилка</Alert>
       </form>

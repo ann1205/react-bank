@@ -5,7 +5,15 @@ const router = express.Router()
 router.get('/', function (req, res) {
   res.render('index', {
     name: 'index',
-    title: 'Home page',
+    title: 'Index page',
+    data: {},
+  })
+})
+
+router.get('/logout', function (req, res) {
+  res.render('logout', {
+    name: 'logout',
+    title: 'Logout page',
     data: {},
   })
 })

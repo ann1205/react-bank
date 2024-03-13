@@ -1,13 +1,27 @@
 import React, { useContext, createContext, useReducer, Reducer } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Page from "./page";
-import WellcomePage from "./container/welcome-page";
+import WellcomePage from "./container/index";
 import SignupPage from "./container/signup-page";
 import SignupConfirmPage from "./container/signup-confirm-page";
 import SigninPage from "./container/signin-page";
 import RecoveryPage from "./container/recovery-page";
 import RecoveryConfirmPage from "./container/recovery-confirm-page";
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   if (window.session) {
+//     const { user } = window.session;
+
+//     if (user.isConfirm) {
+//       window.location.assign("/balance");
+//     } else {
+//       window.location.assign("/signup-confirm");
+//     }
+//   } else {
+//     window.location.assign("/signup");
+//   }
+// });
 
 const BalancePage: React.FC = () => {
   return <div className="App-header">Balance</div>;
