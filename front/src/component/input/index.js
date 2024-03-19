@@ -11,7 +11,7 @@ export default function Component({ children, onChange }) {
         name="email"
         onChange={onChange}
         autoComplete="username"
-        placeholder="Ваш e-mail"
+        placeholder="Enter e-mail"
         type="email"
         className="field__input validation"
       />

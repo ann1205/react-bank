@@ -27,3 +27,14 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+
+.page__grey {
+  background-color: #F5F5F7;
+  height: 852px;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+}

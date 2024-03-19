@@ -17,9 +17,6 @@ router.get('/balance', function (req, res) {
   return res.render('balance', {
     // вказуємо назву контейнера
     name: 'balance',
-    // вказуємо назву компонентів
-    component: [],
-
     // вказуємо назву сторінки
     title: 'Balance page',
     // ... сюди можна далі продовжувати додавати потрібні технічні дані, які будуть використовуватися в layout
@@ -28,6 +25,38 @@ router.get('/balance', function (req, res) {
     data: {},
   })
   // ↑↑ сюди вводимо JSON дані
+})
+
+// router.get Створює нам один ентпоїнт
+
+// ↙️ тут вводимо шлях (PATH) до сторінки
+router.get('/recive', function (req, res) {
+  // res.render генерує нам HTML сторінку
+
+  // ↙️ cюди вводимо назву файлу з сontainer
+  return res.render('recive', {
+    // вказуємо назву контейнера
+    name: 'recive',
+    // вказуємо назву компонентів
+    component: [],
+
+    // вказуємо назву сторінки
+    title: 'Recive page',
+    // ... сюди можна далі продовжувати додавати потрібні технічні дані, які будуть використовуватися в layout
+
+    // вказуємо дані,
+    data: {},
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// router.get Створює нам один ентпоїнт
+
+// ↙️ тут вводимо шлях (PATH) до сторінки
+router.post('/balance', function (req, res) {
+  const { remittance } = req.body
+
+  console.log(remittance)
 })
 
 router.get('/user-list-data', function (req, res) {

@@ -8,6 +8,9 @@ import SignupConfirmPage from "./container/signup-confirm-page";
 import SigninPage from "./container/signin-page";
 import RecoveryPage from "./container/recovery-page";
 import RecoveryConfirmPage from "./container/recovery-confirm-page";
+import RecivePage from "./container/recive-page";
+import SendPage from "./container/send-page";
+import NotificationsPage from "./container/notifications-page";
 
 // document.addEventListener("DOMContentLoaded", () => {
 //   if (window.session) {
@@ -27,20 +30,8 @@ const BalancePage: React.FC = () => {
   return <div className="App-header">Balance</div>;
 };
 
-const NotificationsPage: React.FC = () => {
-  return <div className="App-header">Notifications</div>;
-};
-
 const SettingsPage: React.FC = () => {
   return <div className="App-header">Settings</div>;
-};
-
-const RecivePage: React.FC = () => {
-  return <div className="App-header">Recive</div>;
-};
-
-const SendPage: React.FC = () => {
-  return <div className="App-header">Send</div>;
 };
 
 const TransactionPage: React.FC = () => {
@@ -204,14 +195,14 @@ function App() {
                   </PrivateRoute>
                 }
               /> */}
-              {/* <Route
+              <Route
                 path="/notifications"
                 element={
-                  <PrivateRoute>
-                    <NotificationsPage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <NotificationsPage />
+                  /* </PrivateRoute> */
                 }
-              /> */}
+              />
               {/* <Route
                 path="/settings"
                 element={
@@ -220,22 +211,22 @@ function App() {
                   </PrivateRoute>
                 }
               /> */}
-              {/* <Route
+              <Route
                 path="/recive"
                 element={
-                  <PrivateRoute>
-                    <RecivePage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <RecivePage />
+                  // </PrivateRoute>
                 }
-              /> */}
-              {/* <Route
+              />
+              <Route
                 path="/send"
                 element={
-                  <PrivateRoute>
-                    <SendPage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <SendPage />
+                  // </PrivateRoute>
                 }
-              /> */}
+              />
               {/* <Route
                 path="/transaction/:transactionId"
                 element={
