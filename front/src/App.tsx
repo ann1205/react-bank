@@ -11,6 +11,8 @@ import RecoveryConfirmPage from "./container/recovery-confirm-page";
 import RecivePage from "./container/recive-page";
 import SendPage from "./container/send-page";
 import NotificationsPage from "./container/notifications-page";
+import SettingsPage from "./container/settings-page";
+import BalancePage from "./container/balance-page";
 
 // document.addEventListener("DOMContentLoaded", () => {
 //   if (window.session) {
@@ -25,14 +27,6 @@ import NotificationsPage from "./container/notifications-page";
 //     window.location.assign("/signup");
 //   }
 // });
-
-const BalancePage: React.FC = () => {
-  return <div className="App-header">Balance</div>;
-};
-
-const SettingsPage: React.FC = () => {
-  return <div className="App-header">Settings</div>;
-};
 
 const TransactionPage: React.FC = () => {
   const { transactionId } = useParams();
@@ -187,14 +181,14 @@ function App() {
                   /* </AuthRoute> */
                 }
               />
-              {/* <Route
+              <Route
                 path="/balance"
                 element={
-                  <PrivateRoute>
-                    <BalancePage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <BalancePage />
+                  // </PrivateRoute>
                 }
-              /> */}
+              />
               <Route
                 path="/notifications"
                 element={
@@ -203,14 +197,14 @@ function App() {
                   /* </PrivateRoute> */
                 }
               />
-              {/* <Route
+              <Route
                 path="/settings"
                 element={
-                  <PrivateRoute>
-                    <SettingsPage />
-                  </PrivateRoute>
+                  // <PrivateRoute>
+                  <SettingsPage />
+                  // </PrivateRoute>
                 }
-              /> */}
+              />
               <Route
                 path="/recive"
                 element={

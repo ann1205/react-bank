@@ -1,0 +1,14 @@
+.App-header {
+    padding: 0px;
+}
+
+
+.balance_page-header {
+    background-image: url('./page-bg.svg');
+    padding-top: 20px;
+    height: 202px;
+}
+
+.notification-button {
+    align-self: flex-end;
+}

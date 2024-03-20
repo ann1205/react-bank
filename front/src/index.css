@@ -20,6 +20,21 @@ body {
   color: #FFFFFF;    
 }
 
+.App-link--violet-text {
+  text-decoration: none;
+  color: #775CE5;    
+}
+
+.App-link--red-text {
+  text-decoration: none;
+  color: #F23152;    
+}
+
+.button--white-red {
+  background-color: #FFFFFF !important;  
+  border: 1px solid #F23152;
+}
+
 .icon--small {
   display: block;
   width: 16px;
