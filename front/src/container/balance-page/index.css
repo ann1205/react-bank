@@ -2,13 +2,142 @@
     padding: 0px;
 }
 
+.heading__inline--flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 393px;
+    max-width: 100%;
+    padding: 20px 20px 0px 20px;
+}
+
 
 .balance_page-header {
     background-image: url('./page-bg.svg');
-    padding-top: 20px;
-    height: 202px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    height: 162px;
 }
 
-.notification-button {
-    align-self: flex-end;
+
+
+.title--balance {
+    font-size: 16px;
+    font-weight: 400;
+    color: #F3F5FF;
+
+}
+
+.balance_info {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    padding: 16px;
+}
+
+.balance_count {    
+    font-size: 34px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.notification-button, .settings-button {
+    cursor: pointer;
+    transition: opacity 0.7s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.balance_operation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 15px;
+}
+
+.balance_recive, .balance_send {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recive-button_title, .send-button_title {
+  font-size: 14px;
+  color: #1D1D1F;
+}
+
+.recive-button, .send-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5B94E9;
+  width: 72px;
+  height: 72px;
+  border-radius: 100px;
+  border: 10px solid white;
+  cursor: pointer;
+  
+  transition: background-color 0.7s;
+
+  &:hover {
+    background-color: rgb(132, 177, 246);
+  }
+}
+
+.transaction-list {
+  width: 393px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 0px 20px;
+  gap: 16px;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+	width: 353px;
+	height: 48px;	
+	gap: 12px;
+}
+
+.transaction__info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.transaction__name {
+	font-size: 16px;
+	font-weight: 500;
+	color: #1D1D1F;
+}
+
+.transaction__sub-block {
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+}
+
+.transaction__sub-value {
+	display: flex;
+	align-items: center;
+	font-size: 12px;	
+	color: #939199;
+	gap: 4px;
+}
+
+.transaction__sub-value:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 2px;
+    border-radius: 1px;
+    background-color: #939199;
 }
