@@ -3,7 +3,7 @@ const express = require('express')
 // Cтворюємо роутер - місце, куди ми підключаємо ендпоїнти
 const router = express.Router()
 
-// const { User } = require('../class/user')
+const { Balance } = require('../class/balance')
 
 // ================================================================
 
@@ -53,12 +53,6 @@ router.get('/recive', function (req, res) {
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
-router.post('/balance', function (req, res) {
-  const { remittance } = req.body
-
-  console.log(remittance)
-})
-
 router.get('/user-list-data', function (req, res) {
   const list = User.getList()
 

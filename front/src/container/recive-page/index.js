@@ -15,6 +15,7 @@ import strype from "../../component/button-payment-system/strype.svg";
 import coinbase from "../../component/button-payment-system/coinbase.svg";
 import strypeSystem from "../../component/button-payment-system/strype-system.svg";
 import coinbaseSystem from "../../component/button-payment-system/coinbase-system.svg";
+import { useState } from "react";
 
 class ReciveForm extends MyForm {
   FIELD_NAME = {
@@ -42,13 +43,16 @@ class ReciveForm extends MyForm {
       console.log(this.value);
 
       try {
-        const res = await fetch("http://localhost:4000/recive", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: this.convertData(),
-        });
+        const res = await fetch(
+          "http://localhost:4000/transaction-recive-create",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: this.convertData(),
+          }
+        );
 
         const data = await res.json();
 
@@ -67,7 +71,7 @@ class ReciveForm extends MyForm {
 
   convertData = () => {
     return JSON.stringify({
-      [this.FIELD_NAME.SUM]: this.value[this.FIELD_NAME.SUM],
+      [this.FIELD_NAME.SUM]: Number(this.value[this.FIELD_NAME.SUM]),
     });
   };
 }
@@ -75,8 +79,9 @@ class ReciveForm extends MyForm {
 export default function Container() {
   const reciveForm = new ReciveForm();
 
-  const handleChangeSum = (e) =>
-    reciveForm.change("remittance", e.target.value);
+  const [sum, setSum] = useState("");
+
+  const handleChangeSum = (e) => setSum(e.target.value);
 
   const handleSubmit = (data) => reciveForm.submit(data);
 
@@ -88,8 +93,13 @@ export default function Container() {
       </Heading>
       <form className="page__section">
         <Form>
-          <FormItem name="email">
-            <InputSum className="subtitle" onChange={handleChangeSum}>
+          <FormItem>
+            <InputSum
+              className="subtitle"
+              name="sum"
+              value={sum}
+              onChange={handleChangeSum}
+            >
               Recive amount
             </InputSum>
           </FormItem>
@@ -97,22 +107,24 @@ export default function Container() {
         <Divider />
         <span className="subtitle">Payment system</span>
         <ButtonPaymentSystem
+          name="strype"
           onClick={handleSubmit}
           paymentlogo={strype}
           paymentsystem={strypeSystem}
         >
-          {/* <Link className="App-link" to="/signup-confirm"> */}
-          Strype
-          {/* </Link> */}
+          <Link className="App-link--black-text" to="/balance">
+            Strype
+          </Link>
         </ButtonPaymentSystem>
         <ButtonPaymentSystem
+          name="coinbase"
           onClick={handleSubmit}
           paymentlogo={coinbase}
           paymentsystem={coinbaseSystem}
         >
-          {/* <Link className="App-link" to="/signup-confirm"> */}
-          Coinbase
-          {/* </Link> */}
+          <Link className="App-link--black-text" to="/balance">
+            Coinbase
+          </Link>
         </ButtonPaymentSystem>
         <Alert>Увага, помилка</Alert>
       </form>

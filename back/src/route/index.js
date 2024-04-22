@@ -22,12 +22,14 @@ router.get('/logout', function (req, res) {
 const auth = require('./auth')
 const user = require('./user')
 const balance = require('./balance')
+const transaction = require('./transaction')
 // Підключіть інші файли роутів, якщо є
 
 // Об'єднайте файли роутів за потреби
 router.use('/', auth)
 router.use('/', user)
 router.use('/', balance)
+router.use('/', transaction)
 // Використовуйте інші файли роутів, якщо є
 
 // Експортуємо глобальний роутер

@@ -28,6 +28,14 @@ import BalancePage from "./container/balance-page";
 //   }
 // });
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   try {
+// if (!window.session || !window.session.user) {
+//     location.assign('/')
+//   }
+//   } catch (e) {}
+// })
+
 const TransactionPage: React.FC = () => {
   const { transactionId } = useParams();
 
@@ -42,7 +50,7 @@ const Error: React.FC = () => {
   return <div className="App-header">Error Page</div>;
 };
 
-const initialState = {
+const initialAuthState = {
   token: null as string | null,
   user: null as any,
 };
@@ -57,29 +65,23 @@ type Action = {
 
 const ActionTypes = {
   SIGN_IN: "SIGN_IN",
-  SIGN_UP: "SIGN_UP",
   LOG_OUT: "LOG_OUT",
 };
 
-const authReducer: Reducer<typeof initialState, Action> = (state, action) => {
+const authReducer: Reducer<typeof initialAuthState, Action> = (
+  state,
+  action
+) => {
   switch (action.type) {
     case ActionTypes.SIGN_IN:
       return {
         ...state,
         token: action.payload?.token || null,
         user: action.payload?.user || null,
-      };
-    case ActionTypes.SIGN_UP:
-      return {
-        ...state,
-        token: null,
-        user: null,
-      };
+      }; //
     case ActionTypes.LOG_OUT:
       return {
-        ...state,
-        token: null,
-        user: null,
+        ...initialAuthState,
       };
     default:
       return state;
@@ -87,7 +89,7 @@ const authReducer: Reducer<typeof initialState, Action> = (state, action) => {
 };
 
 type ContextType = {
-  state: typeof initialState;
+  state: typeof initialAuthState;
   isLogged: boolean;
   login: (status: boolean) => void;
   dispatch: React.Dispatch<Action>;
@@ -95,18 +97,18 @@ type ContextType = {
 
 const AuthContext = createContext<ContextType | null>(null);
 
-const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [state, dispatch] = useReducer(authReducer, initialState);
+const AuthRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const auth = useContext(AuthContext);
 
-  const [isLogged, login] = React.useState(false);
+  if (!auth) {
+    return <Navigate to="/" replace />;
+  }
 
-  return (
-    <AuthContext.Provider value={{ state, isLogged, login, dispatch }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  // if (auth) {
+  //   return <Navigate to="/balance" replace />;
+  // }
+
+  return <>{children}</>;
 };
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({
@@ -114,114 +116,118 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const auth = useContext(AuthContext);
 
-  if (!auth) return <Error />;
+  if (!auth) {
+    return <Navigate to="/" replace />;
+  }
 
-  return auth.isLogged ? <>{children}</> : <Navigate to="/Signin" replace />;
+  return !auth.isLogged ? <>{children}</> : <Navigate to="/signin" replace />;
 };
 
-// const AuthRoute: React.FC<> = () => {
-//   const auth = useContext(AuthContext);
-
-//   if (auth)
-//     return auth.isLogged ? <Navigate to="/balance" replace />;
-// };
-
 function App() {
+  const [state, dispatch] = useReducer(authReducer, initialAuthState);
+  const [isLogged, login] = React.useState(false);
+
+  const authContextData: ContextType = {
+    state,
+    dispatch,
+    isLogged,
+    login,
+  };
+
   return (
     <Page>
-      <AuthProvider>
-        <AuthProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route
-                index
-                element={
-                  // <PrivateRoute>
+      <AuthContext.Provider value={authContextData}>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              index
+              element={
+                <AuthRoute>
                   <WellcomePage />
-                  // </PrivateRoute>
-                }
-              />
-              <Route
-                path="/signup"
-                element={
-                  // <PrivateRoute>
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <AuthRoute>
                   <SignupPage />
-                  /* </PrivateRoute> */
-                }
-              />
-              <Route
-                path="/signup-confirm"
-                element={
-                  // <PrivateRoute>
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/signup-confirm"
+              element={
+                <PrivateRoute>
                   <SignupConfirmPage />
-                  // </PrivateRoute>
-                }
-              />
-              <Route
-                path="/signin"
-                element={
-                  // <AuthRoute>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <AuthRoute>
                   <SigninPage />
-                  // </AuthRoute>
-                }
-              />
-              <Route
-                path="/recovery"
-                element={
-                  // <AuthRoute>
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/recovery"
+              element={
+                <AuthRoute>
                   <RecoveryPage />
-                  /* </AuthRoute> */
-                }
-              />
-              <Route
-                path="/recovery-confirm"
-                element={
-                  // <AuthRoute>
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/recovery-confirm"
+              element={
+                <AuthRoute>
                   <RecoveryConfirmPage />
-                  /* </AuthRoute> */
-                }
-              />
-              <Route
-                path="/balance"
-                element={
-                  // <PrivateRoute>
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/balance"
+              element={
+                <PrivateRoute>
                   <BalancePage />
-                  // </PrivateRoute>
-                }
-              />
-              <Route
-                path="/notifications"
-                element={
-                  // <PrivateRoute>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/notifications"
+              element={
+                <PrivateRoute>
                   <NotificationsPage />
-                  /* </PrivateRoute> */
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  // <PrivateRoute>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <PrivateRoute>
                   <SettingsPage />
-                  // </PrivateRoute>
-                }
-              />
-              <Route
-                path="/recive"
-                element={
-                  // <PrivateRoute>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/recive"
+              element={
+                <PrivateRoute>
                   <RecivePage />
-                  // </PrivateRoute>
-                }
-              />
-              <Route
-                path="/send"
-                element={
-                  // <PrivateRoute>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/send"
+              element={
+                <PrivateRoute>
                   <SendPage />
-                  // </PrivateRoute>
-                }
-              />
-              {/* <Route
+                </PrivateRoute>
+              }
+            />
+            {/* <Route
                 path="/transaction/:transactionId"
                 element={
                   <PrivateRoute>
@@ -229,11 +235,10 @@ function App() {
                   </PrivateRoute>
                 }
               /> */}
-              <Route path="*" Component={Error} />
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
-      </AuthProvider>
+            <Route path="*" Component={Error} />
+          </Routes>
+        </BrowserRouter>
+      </AuthContext.Provider>
     </Page>
   );
 }

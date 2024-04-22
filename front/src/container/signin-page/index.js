@@ -80,12 +80,6 @@ class SigninForm extends MyForm {
   };
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   if (window.session) {
-//     window.location.assign("/balance");
-//   }
-// });
-
 export default function Component() {
   const signinForm = new SigninForm();
 
@@ -121,7 +115,7 @@ export default function Component() {
           <Link to="/recovery">Restore</Link>
         </span>
         <ButtonContinue onClick={handleSubmit}>
-          <Link className="App-link" to="/signup-confirm">
+          <Link className="App-link" to="/balance">
             Continue
           </Link>
         </ButtonContinue>
