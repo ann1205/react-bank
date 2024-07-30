@@ -105,6 +105,15 @@
 	width: 353px;
 	height: 48px;	
 	gap: 12px;
+
+  &--click {
+    cursor: pointer;
+    transition: opacity 0.7s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+  }
 }
 
 .transaction__info {
@@ -115,6 +124,7 @@
 
 .transaction__title {
 	font-size: 16px;
+  height: 16px;
 	font-weight: 500;
 	color: #1D1D1F;
 }
@@ -129,6 +139,7 @@
 	display: flex;
 	align-items: center;
 	font-size: 12px;	
+  height: 12px;
 	color: #939199;
 	gap: 4px;
 }

@@ -102,13 +102,13 @@ export default function Container() {
   return (
     <div className="App-header">
       <Backbutton />
+      <Heading>
+        <Title>Sign Up</Title>
+        <Description className={"description-smaller"}>
+          Choose a registration method
+        </Description>
+      </Heading>
       <form className="page__section">
-        <Heading>
-          <Title>Sign Up</Title>
-          <Description className={"description-smaller"}>
-            Choose a registration method
-          </Description>
-        </Heading>
         <Form>
           <FormItem name="email">
             <Input onChange={handleChangeEmail}>Email</Input>
@@ -128,7 +128,10 @@ export default function Container() {
             Continue
           </Link>
         </ButtonContinue>
-        <Alert>Увага, помилка</Alert>
+        <Alert>
+          <span className="icon--warning"></span>A user with the same name is
+          already exist
+        </Alert>
       </form>
     </div>
   );

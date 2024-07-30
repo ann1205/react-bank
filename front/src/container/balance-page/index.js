@@ -149,7 +149,7 @@ export default function Component() {
         </div>
       </div>
       <div className="transaction-list" id="transaction-list">
-        <card>
+        <div className="card">
           <Link className="App-link">
             <div className="transaction-item">
               <img src={strypeIcon} />
@@ -163,7 +163,22 @@ export default function Component() {
               <span>+$112.00</span>
             </div>
           </Link>
-        </card>
+        </div>
+        <div className="card">
+          <Link className="App-link">
+            <div className="transaction-item transaction-item--click">
+              <img src={strypeIcon} />
+              <div className="transaction__info">
+                <span className="transaction__title">Strype</span>
+                <div className="transaction__sub-block">
+                  <span className="transaction__sub-value">12:25</span>
+                  <span className="transaction__sub-value">Announcement</span>
+                </div>
+              </div>
+              <span>+$112.00</span>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

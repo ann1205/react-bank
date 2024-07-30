@@ -70,20 +70,42 @@ class ReciveForm extends MyForm {
   };
 
   convertData = () => {
+    const sumValue = this.value[this.FIELD_NAME.SUM];
+    const sumNumber = Number(sumValue);
+
+    // Перевірка чи значення поля суми є числом
+    if (isNaN(sumNumber)) {
+      throw new Error("Поле суми повинно містити числове значення");
+    }
+
     return JSON.stringify({
-      [this.FIELD_NAME.SUM]: Number(this.value[this.FIELD_NAME.SUM]),
+      [this.FIELD_NAME.SUM]: sumNumber,
     });
+
+    // return JSON.stringify({
+    //   [this.FIELD_NAME.SUM]: Number(this.value[this.FIELD_NAME.SUM]),
+    // });
   };
 }
 
 export default function Container() {
   const reciveForm = new ReciveForm();
 
-  const [sum, setSum] = useState("");
+  // const [sum, setSum] = useState("");
 
-  const handleChangeSum = (e) => setSum(e.target.value);
+  // const handleChangeSum = (e) => setSum(e.target.value);
 
   const handleSubmit = (data) => reciveForm.submit(data);
+
+  const [transferAmount, setTransferAmount] = useState(0);
+
+  const handleTransferAmountChange = (event) => {
+    setTransferAmount(event.target.value);
+  };
+
+  // const handleTransfer = () => {
+  //   Balance.transfer(transferAmount);
+  // };
 
   return (
     <div className="App-header page__grey">
@@ -96,9 +118,9 @@ export default function Container() {
           <FormItem>
             <InputSum
               className="subtitle"
-              name="sum"
-              value={sum}
-              onChange={handleChangeSum}
+              // name="sum"
+              value={transferAmount}
+              onChange={handleTransferAmountChange}
             >
               Recive amount
             </InputSum>

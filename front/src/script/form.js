@@ -75,12 +75,8 @@ export class MyForm {
     const el = document.querySelector(".alert");
 
     if (el) {
-      if (status === "progress") {
-        el.className = "alert alert--progress";
-      } else if (status === "warning") {
+      if (status === "warning") {
         el.className = "alert alert--warning";
-      } else if (status === "success") {
-        el.className = "alert alert--success";
       } else if (status === "error") {
         el.className = "alert alert--error";
       } else {

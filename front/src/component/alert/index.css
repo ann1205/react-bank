@@ -1,14 +1,16 @@
 .alert {
-    /* display: flex; */
+    display: flex;
+    justify-content: center;
     font-size: 14px;
+    color: #F2883D;
+    background-color: rgba(242, 136, 61, 0.1);
     gap: 4px;
-    /* border: 1px solid transparent;
+    border: 1px solid transparent;
     border-radius: 10px;
-    padding: s.space(3) s.space(4);
-    font-size: 14px; */
+    padding: 16px;    
 }  
 
-.alert--progress {
+/* .alert--progress {
   color: green;
   border-color: green;
 }
@@ -16,7 +18,7 @@
 .alert--success {
   color: blue;
   border-color: blue;
-}
+} */
 
 .alert--warning {
   display: block;

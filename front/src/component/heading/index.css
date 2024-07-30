@@ -1,20 +1,29 @@
-.heading {
+.heading__welcome-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px; 
-
-    /* position: relative;
     padding-top: 108px;
-    gap: 16px;        
-    height: 683px;
-    width:  393px;
-    max-width: 100%;   
     background-image: url(welcome-bg-image.svg);
+
+    position: relative;    
+    gap: 16px;        
+    height: 683px;    
+    width:  393px;
+    max-width: 100%;      
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left -184px top 0px;   
-    z-index: 2; */
+    z-index: 2;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;  
+   
+
 }
 
 .heading__inline {

@@ -3,11 +3,12 @@ class Transaction {
 
   static #count = 1
 
-  constructor({ name, typeTransaction, sum }) {
+  constructor({ name, sum, typeTransaction }) {
     this.id = Transaction.#count++
 
     this.name = String(name)
-    this.creationTime = Transaction.getFormattedTime()
+    // this.creationTime = Transaction.getFormattedTime()
+    this.creationTime = new Date().getTime()
     this.typeTransaction = typeTransaction
     this.sum = Number(sum)
   }

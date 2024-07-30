@@ -34,7 +34,9 @@
 .alert--disabled {
     display: none;
 }
+ */
 
 .icon--warning {
+    background-size: auto;
     background-image: url(danger-light.svg);
-} */
+}

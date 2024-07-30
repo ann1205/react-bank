@@ -27,6 +27,25 @@ router.get('/balance', function (req, res) {
   // ↑↑ сюди вводимо JSON дані
 })
 
+router.get('/balance-amount', function (req, res) {
+  try {
+    // Отримуємо дані балансу
+    const balanceData = Balance.getBalance()
+    console.log(balanceData)
+    // Відправляємо дані у форматі JSON
+    return res.json(balanceData)
+  } catch (error) {
+    // Обробляємо помилку, якщо її виникає
+    console.error(
+      'Помилка при отриманні даних балансу:',
+      error,
+    )
+    return res.status(500).json({
+      message: 'Помилка при отриманні даних балансу',
+    })
+  }
+})
+
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки

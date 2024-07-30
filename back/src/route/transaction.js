@@ -4,6 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 const { Transaction } = require('../class/transaction')
+const { Balance } = require('../class/balance')
 
 // ================================================================
 
@@ -19,12 +20,12 @@ router.post(
   '/transaction-recive-create',
   function (req, res) {
     try {
-      const { name, sum, transactionId, typeTransaction } =
-        req.body
+      const { name, sum, transactionId } = req.body
 
-      if (!sum) {
+      if (!name || !sum) {
         return res.status(400).json({
-          message: 'Потрібно ввести суму переказу',
+          message:
+            'Не всі дані для створення транзакції отримання надійшли',
         })
       }
 
@@ -34,7 +35,7 @@ router.post(
 
       if (transactionId) {
         transactionRecive = Transaction.getById(
-          Number(transactionRecive),
+          Number(transactionId),
         )
         console.log('transactionRecive', transactionRecive)
 
@@ -47,10 +48,14 @@ router.post(
 
       const newTransactionRecive = Transaction.create(
         name,
-        time,
-        typeTransaction,
         sum,
       )
+
+      Balance.deposit(sum)
+
+      console.log(sum)
+
+      console.log(Balance.getBalance)
 
       return res.status(200).json({
         transactionRecive: {
@@ -58,12 +63,15 @@ router.post(
           name: newTransactionRecive.name,
           typeTransaction: 'receipt',
           sum: newTransactionRecive.sum,
-          time: newTransactionRecive.time,
+          creationTime: newTransactionRecive.creationTime,
         },
+
+        balance: Balance.getBalance(),
       })
     } catch (e) {
-      return res.status(400).json({
-        message: e.message,
+      return res.status(500).json({
+        message:
+          'Сталася помилка при створенні транзакції отримання',
       })
     }
   },
